@@ -33,7 +33,7 @@ import h5py
 
 
 # Below is auxiliary code that can hopefully go away in the future
-import smiles_config as sc
+from . import smiles_config as sc
 import os
 from tqdm import tqdm
 import dill

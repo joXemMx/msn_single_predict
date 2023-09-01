@@ -11,7 +11,7 @@ import base64
 from bitstring import BitArray, BitStream, ConstBitStream
 import os
 import sys
-import smiles_config as sc
+from . import smiles_config as sc
 import sqlite3
 from sqlite3 import Error
 import pickle
