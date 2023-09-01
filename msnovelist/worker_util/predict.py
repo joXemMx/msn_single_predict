@@ -22,6 +22,9 @@ with open(yaml_file_path, 'w') as yaml_file:
 dir = os.getcwd()
 os.chdir(parent_folder)
 
+os.environ['PYTHONPATH']=parent_folder
+os.environ['COMPUTERNAME']='DOCKER-LIGHT'
+
 
 import load_model
 import utility
