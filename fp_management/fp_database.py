@@ -36,7 +36,7 @@ import h5py
 
 
 # Below is auxiliary code that can hopefully go away in the future
-from . import smiles_config as sc
+import smiles_config as sc
 import os
 from tqdm import tqdm
 import dill
@@ -56,9 +56,7 @@ else:
         sc.config["base_folder"],
         "pubchem_ref/pubchem_ref.db")
 
-print(db_pubchem_path)
 db_pubchem = sqlite3.connect(db_pubchem_path)
-print(db_pubchem)
 
 
 

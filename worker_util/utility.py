@@ -21,19 +21,7 @@ def mol_form_processing(formula):
     return legality, composition_counter
 
 
-# Create correct result format for API request from results_df
-def df_to_results(df):
-    results = []
-    for _, row in df.iterrows():
-        result_entry = {
-            "smiles": row["smiles"],
-            "rnnScore": row["score"]
-        }
-        results.append(result_entry)
-    return results
-
-
-def predict(composition_counter, formula, fp, k, model_encode, decoder):
+def predict(composition_counter, formula, fp, filtered, k, model_encode, decoder):
     fo = [composition_counter]
     fo_ = gen.mf_pipeline(fo).astype('float32')
     nh = fo_[:,-1]
@@ -50,4 +38,6 @@ def predict(composition_counter, formula, fp, k, model_encode, decoder):
     smiles = decoder.sequence_ytoc(seq)
     
     results_df = decoder.format_results(smiles, score)
+    if filtered:
+        results_df = smiles_postprocessing.filter_and_unique_smiles(results_df, formula)
     return results_df

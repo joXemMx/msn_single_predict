@@ -1,4 +1,4 @@
-base_folder: placeholder
+base_folder: /home/joxem/msn_single_predict/
 batch_size: 256
 cv_fold: 0
 cv_folds: 10
